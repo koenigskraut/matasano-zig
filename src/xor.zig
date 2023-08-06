@@ -11,3 +11,9 @@ pub fn bufScalarXor(buf: []const u8, scalar: u8, out: []u8) ![]const u8 {
     for (out[0..buf.len], 0..) |*v, i| v.* = buf[i] ^ scalar;
     return out[0..buf.len];
 }
+
+pub fn repeatingKeyXor(in: []const u8, key: []const u8, out: []u8) ![]const u8 {
+    if (in.len > out.len) return error.BufSizeMismatch;
+    for (out[0..in.len], 0..) |*v, i| v.* = in[i] ^ key[i % key.len];
+    return out[0..in.len];
+}

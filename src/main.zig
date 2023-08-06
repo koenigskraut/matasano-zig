@@ -5,6 +5,9 @@ pub const set1 = struct {
     pub const ch2 = @import("Set_1/Challenge_2.zig");
     pub const ch3 = @import("Set_1/Challenge_3.zig");
     pub const ch4 = @import("Set_1/Challenge_4.zig");
+    pub const ch5 = @import("Set_1/Challenge_5.zig");
+    pub const ch6 = @import("Set_1/Challenge_6.zig");
+    pub const ch7 = @import("Set_1/Challenge_7.zig");
 };
 
 comptime {
