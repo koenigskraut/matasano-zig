@@ -15,5 +15,5 @@ test "Challenge 8" {
             if (std.mem.count(u8, line, chunk) > 1) break :outer;
         }
     }
-    std.debug.print("AES-ECB cipher detected on line #{}\n", .{lineNumber});
+    std.debug.print("Challenge  8: AES-ECB cipher detected on line #{}\n", .{lineNumber});
 }

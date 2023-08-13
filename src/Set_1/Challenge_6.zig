@@ -86,6 +86,6 @@ test "Challenge 6" {
     var out = try allocator.alloc(u8, data.len);
     const result = try xor.repeatingKeyXor(data, keyBytes, out);
     try fileOut.writeAll(result);
-    std.debug.print("KEY IS \"{s}\"; deciphered text written to {s}\n", .{ keyBytes, fileName });
+    std.debug.print("Challenge  6: KEY IS \"{s}\"; deciphered text written to {s}\n", .{ keyBytes, fileName });
     // std.debug.print("==== DECIPHERED TEXT ====\n{s}\n=========================\n", .{result});
 }

@@ -2,13 +2,15 @@ const std = @import("std");
 const b64 = std.base64;
 const crypto = @import("../crypto.zig");
 
-// AES in ECB mode
-// The Base64-encoded content in this file
-const file = @embedFile("../data/7.txt");
-// has been encrypted via AES-128 in ECB mode under the key
-var fileKey = "YELLOW SUBMARINE".*;
+// Implement CBC mode
 
-test "Challenge 7" {
+// The file here is intelligible (somewhat) when CBC decrypted against "YELLOW SUBMARINE"
+// with an IV of all ASCII 0 (\x00\x00\x00 &c)
+const file = @embedFile("../data/10.txt");
+var key: [16]u8 = "YELLOW SUBMARINE".*;
+var iv = [_]u8{0} ** 16;
+
+test "Challenge 10" {
     @setEvalBranchQuota(10_000);
     const dataLen = file.len - comptime std.mem.count(u8, file, &.{'\n'});
     var withoutNL: [dataLen]u8 = undefined;
@@ -23,12 +25,11 @@ test "Challenge 7" {
     var out = try std.testing.allocator.alloc(u8, data.len);
     defer std.testing.allocator.free(out);
 
-    const result = crypto.ECB.decrypt(data, fileKey, out);
-
-    const fileName = "out/7_deciphered.txt";
+    const result = crypto.CBC.decrypt(data, key, iv, out);
+    const fileName = "out/10_deciphered.txt";
     const outFile = try std.fs.cwd().createFile(fileName, .{});
     try outFile.writeAll(result);
     outFile.close();
 
-    std.debug.print("Challenge  7: deciphered text written to {s}\n", .{fileName});
+    std.debug.print("Challenge 10: deciphered text written to {s}\n", .{fileName});
 }

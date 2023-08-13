@@ -13,6 +13,7 @@ pub const set1 = struct {
 
 pub const set2 = struct {
     pub const ch9 = @import("Set_2/Challenge_9.zig");
+    pub const ch10 = @import("Set_2/Challenge_10.zig");
 };
 
 comptime {
