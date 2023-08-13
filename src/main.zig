@@ -8,8 +8,14 @@ pub const set1 = struct {
     pub const ch5 = @import("Set_1/Challenge_5.zig");
     pub const ch6 = @import("Set_1/Challenge_6.zig");
     pub const ch7 = @import("Set_1/Challenge_7.zig");
+    pub const ch8 = @import("Set_1/Challenge_8.zig");
+};
+
+pub const set2 = struct {
+    pub const ch9 = @import("Set_2/Challenge_9.zig");
 };
 
 comptime {
     std.testing.refAllDecls(set1);
+    std.testing.refAllDecls(set2);
 }
